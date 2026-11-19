@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<title>SEO Research Toolkit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+<style>
+:root{--bg:#eef3fb;--gl:rgba(255,255,255,.78);--bd:rgba(80,100,160,.22);--tx:#14203a;--mu:#5b6985;--ac:#0891b2;--ac2:#6d28d9;--in:rgba(255,255,255,.9);--sh:rgba(30,50,110,.18);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme=dark]{--bg:#070b18;--gl:rgba(20,28,56,.62);--bd:rgba(120,150,255,.18);--tx:#e6ecff;--mu:#93a0c4;--ac:#22d3ee;--ac2:#8b5cf6;--in:rgba(8,12,30,.7);--sh:rgba(0,0,0,.55)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;font:14px/1.55 system-ui,"Segoe UI",Roboto,sans-serif;color:var(--tx);background:var(--bg) radial-gradient(900px 500px at 10% -10%,rgba(34,211,238,.16),transparent),radial-gradient(800px 500px at 100% 0,rgba(139,92,246,.16),transparent) fixed}
+.app{display:flex;min-height:100vh}
+aside{width:250px;flex:none;position:sticky;top:0;height:100vh;overflow:auto;padding:14px;background:var(--gl);backdrop-filter:blur(16px);border-right:1px solid var(--bd);transition:width .25s,left .25s;z-index:20}
+aside.c{width:66px}aside.c .t{display:none}
+.logo{font-weight:700;font-size:15px;margin:4px 6px 14px;background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:0;color:var(--mu);padding:9px 10px;border-radius:10px;cursor:pointer;font:inherit;transition:.2s}
+nav button i{font-style:normal;width:20px;text-align:center;color:var(--ac)}
+nav button:hover{background:rgba(120,150,255,.12);color:var(--tx);transform:translateX(3px)}
+nav button.on{background:linear-gradient(90deg,rgba(34,211,238,.2),rgba(139,92,246,.2));color:var(--tx);box-shadow:inset 0 0 0 1px var(--bd)}
+main{flex:1;min-width:0;padding:0 20px 20px;max-width:1240px}
+.top{display:flex;align-items:center;gap:10px;padding:14px 0;position:sticky;top:0;z-index:10;backdrop-filter:blur(10px)}
+.top b{flex:1}
+h2{margin:0 0 4px;font-size:20px}h3{margin:14px 0 6px}
+.card{background:var(--gl);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:16px;backdrop-filter:blur(12px);box-shadow:0 14px 30px -16px var(--sh),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:perspective(1000px) translateY(-3px) rotateX(1deg);box-shadow:0 22px 40px -18px var(--sh),0 0 24px -8px var(--ac)}
+.mut{color:var(--mu)}.note{color:var(--mu);font-size:12px;border-left:3px solid var(--ac2);padding-left:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+input,select,textarea{background:var(--in);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:8px 10px;font:inherit;min-width:0}
+textarea{width:100%;resize:vertical}input:focus,select:focus,textarea:focus{outline:2px solid var(--ac)}
+button{background:var(--in);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:8px 12px;cursor:pointer;font:inherit;transition:.2s}
+button:hover{border-color:var(--ac);box-shadow:0 0 14px -4px var(--ac)}
+button.pri{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#fff;border:0}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%}th,td{padding:8px 10px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:top}th{color:var(--mu);font-weight:600;white-space:nowrap}
+.tag{padding:2px 8px;border-radius:99px;font-size:12px;white-space:nowrap;background:rgba(120,150,255,.16)}.tag.I{background:rgba(34,211,238,.18)}.tag.C{background:rgba(139,92,246,.22)}.tag.T{background:rgba(52,211,153,.2)}.tag.N{background:rgba(251,191,36,.2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.stat{padding:12px;border:1px solid var(--bd);border-radius:12px;background:var(--in)}.stat b{display:block;font-size:22px}.stat span{color:var(--mu);font-size:12px}
+.bar{height:10px;border-radius:9px;background:var(--in);overflow:hidden;border:1px solid var(--bd)}.bar div{height:100%;background:linear-gradient(90deg,var(--ac),var(--ac2));transition:width .3s}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{background:var(--in);border:1px solid var(--bd);border-radius:99px;padding:2px 10px}.chip b{cursor:pointer;color:var(--ac2);margin-left:4px}
+.warn{padding:12px;border-radius:12px;border:1px dashed var(--ac2);background:rgba(139,92,246,.1)}
+.ser{background:#fff;color:#202124;border-radius:12px;padding:14px;font-family:Arial,sans-serif;max-width:660px}.ser .u{font-size:12px;color:#4d5156}.ser .ti{font-size:20px;color:#1a0dab;line-height:1.3;margin:2px 0}.ser .de{font-size:14px;color:#4d5156;line-height:1.58}
+.ser.m{max-width:380px}.ser.m .ti{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.ser.m .de{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+pre{background:var(--in);border:1px solid var(--bd);border-radius:10px;padding:10px;overflow:auto;font-size:12px}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ac2);color:#fff;padding:9px 16px;border-radius:99px;opacity:0;pointer-events:none;transition:.25s;z-index:50}#toast.on{opacity:1;transform:translate(-50%,0)}
+footer{color:var(--mu);text-align:center;padding:16px 0;font-size:12px}
+@media(max-width:800px){aside{position:fixed;left:-270px;width:250px}aside.o{left:0}aside.c{width:250px}aside.c .t{display:inline}main{padding:0 12px 12px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.card:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside id="sb"><div class="logo">◈ <span class="t">SEO Research Toolkit</span></div><nav id="nav"></nav></aside>
+<main>
+<div class="top"><button id="mn" aria-label="Toggle menu">☰</button><b>Keyword Intelligence &amp; Content Analyzer</b><button id="th">◐ Theme</button></div>
+<div id="v"></div>
+<footer>SEO Research Toolkit · Developed by Haseeb Mazhar | Cyber Security Student</footer>
+</main>
+</div>
+<div id="toast"></div>
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const BR='SEO Research Toolkit | Developed by Haseeb Mazhar | Cyber Security Student';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const day=()=>new Date().toISOString().slice(0,10),slug=s=>(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'export';
+const St={g(k){try{return JSON.parse(localStorage.getItem('seo_'+k))||[]}catch(e){return[]}},s(k,v){try{localStorage.setItem('seo_'+k,JSON.stringify(v))}catch(e){toast('Browser storage unavailable')}},add(k,o){this.s(k,[o,...this.g(k)].slice(0,200))}};
+function toast(m){const t=$('#toast');t.textContent=m;t.className='on';clearTimeout(toast.t);toast.t=setTimeout(()=>t.className='',2200)}
+function dl(n,t,m='text/plain'){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:m+';charset=utf-8'}));a.download=n;document.body.appendChild(a);a.click();a.remove();toast('Downloaded '+n)}
+const cp=t=>{try{navigator.clipboard.writeText(t).then(()=>toast('Copied to clipboard'),()=>toast('Copy blocked by browser'))}catch(e){toast('Copy blocked by browser')}};
+const cq=v=>'"'+String(v).replace(/"/g,'""')+'"';
+const csv=(h,rows)=>['# '+BR,'# Generated: '+new Date().toLocaleString(),h.map(cq).join(','),...rows.map(r=>r.map(cq).join(','))].join('\n');
+const STOP='a an the of for to in on and or with how what why is are do does best free your my vs from by at as it be can this that you'.split(' ');
+const lines=v=>[...new Set(v.split(/\n/).map(x=>x.trim().toLowerCase()).filter(Boolean))];
+const QW=/^(how|what|why|where|when|who|which|can|is|does|do|are|should)\b/i;
+const intentOf=k=>QW.test(k)?'Informational':/\b(buy|price|pricing|cheap|discount|order|hire|coupon|course|services?|software|download)\b/i.test(k)?'Transactional':/\b(best|reviews?|vs|comparison|compare|alternatives?|top)\b/i.test(k)?'Commercial Investigation':/\b(login|official|website|app)\b/i.test(k)?'Navigational':'Informational';
+const IN={Informational:['The searcher wants to learn or understand something.','Guides, how-tos, explainers and FAQ content.'],'Commercial Investigation':['The searcher is comparing options before deciding.','Comparison pages, “best of” lists, reviews and alternatives.'],Transactional:['The searcher is ready to act, buy or sign up.','Product, pricing or service pages with a clear call to action.'],Navigational:['The searcher is looking for a specific site or page.','Clear brand, login and official pages.']};
+const INT=Object.keys(IN);
+const COUNTRIES=['Global','Pakistan','United States','United Kingdom','India','Canada','Australia','UAE'],LANGS=['English','Urdu','Arabic','Spanish','French'];
+const TPL=[['how to {}','High'],['what is {}','High'],['why is {} important','Medium'],['where to learn {}','Medium'],['when to use {}','Medium'],['how does {} work','High'],['is {} worth it','Medium'],['can beginners learn {}','Medium'],['best {}','High'],['best {} for beginners','High'],['{} guide','High'],['{} guide for beginners','High'],['free {}','Medium'],['{} for students','Medium'],['{} without investment','Medium'],['{} alternatives','Medium'],['{} comparison','Medium'],['{} tips','High'],['{} review','Medium'],['how to start {} from scratch','Medium'],['{} tools','High'],['{} online','Medium'],['{} course','Medium'],['{} software','Medium'],['{} services','Medium'],['{} examples','Medium'],['{} price','Medium'],['{} tutorial','High']];
+let G={seed:'',country:'Global',lang:'English',niche:''},CUR=[],C=[],L={};
+function gen(g){const s=g.seed.trim().toLowerCase().replace(/\s+/g,' ');if(!s)return[];const seen=new Set(),out=[];
+const add=(k,rel)=>{k=k.replace(/\s+/g,' ').trim();if(seen.has(k))return;seen.add(k);const w=k.split(' ').length;out.push({k,w,type:QW.test(k)?'Question':w>=3?'Long-tail':'Short-tail',intent:intentOf(k),rel,src:'Rule-based'})};
+add(s,'High');TPL.forEach(([t,r])=>add(t.replace('{}',s),r));
+if(g.country!=='Global'){add(s+' in '+g.country,'High');add('best '+s+' in '+g.country,'Medium');add(s+' services in '+g.country,'Low')}
+const n=g.niche.trim().toLowerCase();if(n){add(s+' for '+n,'High');add(n+' '+s,'Medium');add('best '+s+' for '+n,'Medium');add('how to use '+s+' for '+n,'Medium')}
+return out}
+const kwH=['Keyword','Words','Type','Intent','Relevance (rule-based)','Source'],kwRows=r=>r.map(x=>[x.k,x.w,x.type,x.intent,x.rel,x.src]);
+const kwTXT=r=>BR+'\nGenerated: '+new Date().toLocaleString()+'\nSource: rule-based ideas (no search volume or difficulty data)\n\n'+r.map(x=>x.k).join('\n');
+const kwJSON=r=>JSON.stringify({tool:'SEO Research Toolkit',developer:'Haseeb Mazhar | Cyber Security Student',generated:new Date().toISOString(),dataSource:'Rule-based keyword ideas. No search volume, KD or CPC included.',keywords:r},null,2);
+const cat=k=>/tools?|software|app/.test(k)?'Tools':/course|tutorial|guide|tips|learn/.test(k)?'Learning':/price|services?|hire/.test(k)?'Commercial':/review|best|alternatives?|comparison/.test(k)?'Comparison':'Core topic';
+
+const V={};
+function kwView(el,id,title,desc,filt,xh,xf){
+el.innerHTML=`<div class=card><h2>${title}</h2><p class=mut>${desc}</p>
+<form id=f class=row><input id=s placeholder="Seed keyword, e.g. seo" value="${esc(G.seed)}" required><select id=c>${COUNTRIES.map(c=>`<option${c==G.country?' selected':''}>${c}</option>`).join('')}</select><select id=l>${LANGS.map(c=>`<option${c==G.lang?' selected':''}>${c}</option>`).join('')}</select><input id=n placeholder="Niche (optional)" value="${esc(G.niche)}"><button class=pri>Generate</button></form>
+<p class=note>Every keyword here is a <b>rule-based idea</b> built from templates in your browser. No search volume, difficulty or CPC is shown because no data provider is connected. Templates are English-only; edit exported lists for other languages.</p></div><div id=t></div>`;
+const draw=()=>{CUR=gen(G);const rows=CUR.filter(filt);const T=$('#t');
+if(!rows.length){T.innerHTML='<div class=card><p class=mut>'+(G.seed?'No keywords match this view for the current seed.':'Enter a seed keyword and press Generate.')+'</p></div>';return}
+T.innerHTML=`<div class=card><div class=row><input id=q placeholder="Search results…"><select id=fi><option value="">All intents</option>${INT.map(i=>`<option>${i}</option>`).join('')}</select><select id=so><option value=k>Sort: A–Z</option><option value=w>Sort: word count</option><option value=i>Sort: intent</option><option value=r>Sort: relevance</option></select></div>
+<div class=row><label><input type=checkbox id=all> Select all</label><button data-a=copy>Copy</button><button data-a=save>Save</button><button data-a=csv>CSV</button><button data-a=txt>TXT</button><button data-a=json>JSON</button><span class=mut id=cnt></span></div>
+<div class=tw><table><thead><tr><th></th><th>Keyword</th><th>Words</th><th>Type</th><th>Intent</th><th>Relevance*</th><th>Source</th>${xh||''}</tr></thead><tbody id=tb></tbody></table></div>
+<p class=mut>*Relevance is a rule-based template weight, not search data. Actions apply to ticked rows, or to all visible rows when none are ticked.</p></div>`;
+const sel=new Set();let vis=[];const RK={High:0,Medium:1,Low:2};
+const body=()=>{const t=$('#q').value.toLowerCase(),f=$('#fi').value,s=$('#so').value;vis=rows.filter(r=>r.k.includes(t)&&(!f||r.intent==f));
+vis.sort((a,b)=>s=='w'?a.w-b.w||a.k.localeCompare(b.k):s=='i'?a.intent.localeCompare(b.intent):s=='r'?RK[a.rel]-RK[b.rel]:a.k.localeCompare(b.k));
+$('#tb').innerHTML=vis.map(r=>`<tr><td><input type=checkbox data-k="${esc(r.k)}"${sel.has(r.k)?' checked':''}></td><td>${esc(r.k)}</td><td>${r.w}</td><td>${r.type}</td><td><span class="tag ${r.intent[0]}">${r.intent}</span></td><td>${r.rel}</td><td>${r.src}</td>${xf?xf(r):''}</tr>`).join('');
+$('#cnt').textContent=vis.length+' shown · '+sel.size+' selected'};
+['#q','#fi','#so'].forEach(s=>$(s).oninput=body);
+$('#tb').onchange=e=>{const k=e.target.dataset.k;if(k===undefined)return;e.target.checked?sel.add(k):sel.delete(k);$('#cnt').textContent=vis.length+' shown · '+sel.size+' selected'};
+$('#all').onchange=e=>{vis.forEach(r=>e.target.checked?sel.add(r.k):sel.delete(r.k));body()};
+const pick=()=>sel.size?vis.filter(r=>sel.has(r.k)):vis,nm=`seo-${id}-${slug(G.seed)}-${day()}`;
+T.onclick=e=>{const a=e.target.dataset.a;if(!a)return;const p=pick();if(!p.length)return toast('Nothing to use');
+if(a=='copy')cp(p.map(r=>r.k).join('\n'));
+if(a=='save'){const s=St.g('saved'),have=new Set(s.map(x=>x.k));const n=p.filter(r=>!have.has(r.k)).map(r=>({k:r.k,intent:r.intent,type:r.type,seed:G.seed,date:day()}));St.s('saved',[...n,...s]);toast(n.length+' keyword(s) saved')}
+if(a=='csv')dl(nm+'.csv',csv(kwH,kwRows(p)),'text/csv');if(a=='txt')dl(nm+'.txt',kwTXT(p));if(a=='json')dl(nm+'.json',kwJSON(p),'application/json')};
+body()};
+$('#f').onsubmit=e=>{e.preventDefault();G={seed:$('#s').value,country:$('#c').value,lang:$('#l').value,niche:$('#n').value};St.add('kwh',{seed:G.seed,country:G.country,lang:G.lang,niche:G.niche,n:gen(G).length,date:new Date().toLocaleString()});draw()};
+draw()}
+V.research=el=>kwView(el,'research','Keyword Research','Generate related, long-tail, short-tail and question keyword ideas with search intent.',()=>true);
+V.longtail=el=>kwView(el,'longtail','Long-tail Keyword Finder','Three-word-plus variations using how/what/why/where/when, best, beginner, guide, free, students, location, alternatives, comparison, tips and review.',r=>r.w>=3);
+V.shorttail=el=>kwView(el,'shorttail','Short-tail Keyword Analyzer','One- and two-word head terms with category and related variations.',r=>r.w<=2,'<th>Category</th><th>Variations</th>',r=>`<td>${cat(r.k)}</td><td>${esc(CUR.filter(x=>x.k!==r.k&&x.k.includes(r.k)).slice(0,2).map(x=>x.k).join('; ')||'—')}</td>`);
+V.related=el=>kwView(el,'related','Related Keywords','Topic and modifier variations around your seed (questions excluded; see Question Keywords).',r=>r.type!='Question');
+V.questions=el=>kwView(el,'questions','Question Keyword Finder','Question-style queries starting with how, what, why, where, when, can and is.',r=>r.type=='Question');
+
+V.kd=el=>{el.innerHTML=`<div class=card><h2>Keyword Difficulty &amp; SEO Metrics</h2><p class=mut>Real metrics require a connected data provider. Nothing here is estimated or invented.</p><div class=row><input id=k placeholder="Keyword"><button class=pri id=go>Fetch metrics</button></div><div id=o></div></div>
+<div class=card><h3>Connecting a provider later</h3><p class=mut>Define <code>window.SEOProvider</code> before the app script runs (for example in a separate provider.js). Use a serverless proxy so your API key is never exposed in the browser.</p><pre>window.SEOProvider = {
+  async metrics(keyword, {country, language}) {
+    return {kd, volume, cpc, competition, trend}; // from your API
+  }
+};</pre></div>`;
+const cards=(m,s)=>'<div class=grid>'+[['Keyword Difficulty','kd'],['Search Volume','volume'],['CPC','cpc'],['Competition','competition'],['Trend','trend']].map(([n,k])=>`<div class=stat><span>${n}</span><b>${m&&m[k]!=null?esc(m[k]):'Unavailable'}</b><span>${m&&m[k]!=null?'API-sourced':'No data'}</span></div>`).join('')+'</div>'+(s||'');
+$('#o').innerHTML=cards(null,'<p class=warn>Live metrics unavailable — no SEO data provider connected.</p>');
+$('#go').onclick=async()=>{const k=$('#k').value.trim();if(!k)return toast('Enter a keyword');const P=window.SEOProvider;
+if(!P||!P.metrics)return $('#o').innerHTML=cards(null,'<p class=warn>Live metrics unavailable — no SEO data provider connected.</p>');
+try{$('#o').innerHTML=cards(await P.metrics(k,{country:G.country,language:G.lang}),'<p class=note>Source: your connected provider (API-sourced).</p>')}catch(e){$('#o').innerHTML=cards(null,'<p class=warn>Provider error: '+esc(e.message)+'</p>')}}};
+
+V.serp=el=>{el.innerHTML=`<div class=card><h2>SERP Research</h2><p class=mut>Shows live results only when a SERP provider is connected. No rankings, positions or competitor metrics are ever invented.</p><div class=row><input id=k placeholder="Keyword"><button class=pri id=go>Fetch SERP</button></div><div id=o><p class=warn>Live SERP data unavailable — no SEO data provider connected.</p></div><p class=note>Provider hook: <code>SEOProvider.serp(keyword, opts)</code> returning <code>[{position, title, url}]</code>.</p></div>`;
+$('#go').onclick=async()=>{const k=$('#k').value.trim(),P=window.SEOProvider;if(!k)return toast('Enter a keyword');
+if(!P||!P.serp)return $('#o').innerHTML='<p class=warn>Live SERP data unavailable — no SEO data provider connected.</p>';
+try{const r=await P.serp(k,{country:G.country,language:G.lang});$('#o').innerHTML='<p class=note>API-sourced results</p><div class=tw><table><tr><th>#</th><th>Title</th><th>URL</th></tr>'+r.map(x=>`<tr><td>${esc(x.position)}</td><td>${esc(x.title)}</td><td>${esc(x.url)}</td></tr>`).join('')+'</table></div>'}catch(e){$('#o').innerHTML='<p class=warn>Provider error: '+esc(e.message)+'</p>'}}};
+
+V.intent=el=>{el.innerHTML=`<div class=card><h2>Search Intent Analyzer</h2><p class=mut>One keyword per line. Intent is <b>rule-based</b> (word-pattern matching), not provider-verified.</p><textarea id=ta rows=6 placeholder="how to start a blog&#10;best seo tools&#10;seo course price"></textarea><div class=row><button class=pri id=go>Analyze</button><button id=dl>Download CSV</button></div></div><div id=out></div>`;let R=[];
+$('#go').onclick=()=>{R=lines($('#ta').value).map(k=>{const i=intentOf(k);return[k,i,IN[i][0],IN[i][1]]});
+$('#out').innerHTML=R.length?`<div class=card><div class=tw><table><tr><th>Keyword</th><th>Intent (rule-based)</th><th>Explanation</th><th>Content suggestion</th></tr>${R.map(r=>`<tr><td>${esc(r[0])}</td><td><span class="tag ${r[1][0]}">${r[1]}</span></td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}</table></div></div>`:'<p class=mut>Add at least one keyword.</p>'};
+$('#dl').onclick=()=>R.length?dl(`seo-search-intent-${day()}.csv`,csv(['Keyword','Intent (rule-based)','Explanation','Content suggestion'],R),'text/csv'):toast('Analyze keywords first')};
+
+const tok=k=>k.split(/[^a-z0-9]+/).filter(w=>w.length>2&&!STOP.includes(w));
+const group=ks=>{const f={};ks.forEach(k=>new Set(tok(k)).forEach(t=>f[t]=(f[t]||0)+1));const m={};
+ks.forEach(k=>{const t=tok(k).filter(x=>f[x]>1&&!(ks.length>=6&&f[x]>.6*ks.length)).sort((a,b)=>f[b]-f[a]||b.length-a.length)[0]||'ungrouped';(m[t]=m[t]||[]).push(k)});
+return Object.entries(m).map(([name,kws])=>({name,kws})).sort((a,b)=>b.kws.length-a.kws.length)};
+const topInt=c=>{const i=c.kws.map(intentOf);return[...new Set(i)].sort((a,b)=>i.filter(x=>x==b).length-i.filter(x=>x==a).length)[0]||'Informational'};
+const clusterCSV=cl=>csv(['Cluster','Keyword','Suggested topic','Intent (rule-based)','Content recommendation'],cl.flatMap(c=>c.kws.map(k=>[c.name,k,'Complete guide to '+c.name,topInt(c),IN[topInt(c)][1]])));
+V.cluster=el=>{el.innerHTML=`<div class=card><h2>Keyword Clustering</h2><p class=mut>Groups keywords by shared words (lexical grouping). This is <b>not SERP-based</b> clustering.</p><textarea id=ta rows=6 placeholder="One keyword per line"></textarea><div class=row><input type=file id=fi accept=".csv,.txt"><button class=pri id=go>Group keywords</button><button id=sv>Save clusters</button><button id=dc>Download CSV</button></div></div><div id=cl></div>`;
+const draw=()=>{$('#cl').innerHTML=C.map((c,i)=>{const t=topInt(c);return`<div class=card><div class=row><input data-r=${i} value="${esc(c.name)}" aria-label="Cluster name"><span class="tag ${t[0]}">${t} (rule-based)</span><button data-d=${i}>Delete cluster</button></div><p class=mut>Suggested topic: <b>${esc('Complete guide to '+c.name)}</b> · ${IN[t][1]}</p><div class=chips>${c.kws.map((k,j)=>`<span class=chip>${esc(k)} <b data-x="${i}:${j}">×</b></span>`).join('')}</div></div>`}).join('')};
+$('#go').onclick=()=>{C=group(lines($('#ta').value));if(!C.length)toast('Add keywords first');draw()};
+$('#cl').onclick=e=>{const d=e.target.dataset;if(d.x){const[i,j]=d.x.split(':');C[i].kws.splice(j,1);if(!C[i].kws.length)C.splice(i,1);draw()}if(d.d){C.splice(d.d,1);draw()}};
+$('#cl').onchange=e=>{if(e.target.dataset.r!==undefined)C[e.target.dataset.r].name=e.target.value.trim()||'untitled'};
+$('#fi').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const k=r.result.split(/\r?\n/).filter(x=>x&&x[0]!='#').map(x=>x.split(',')[0].replace(/^"|"$/g,'').trim()).filter(x=>x&&!/^keyword$/i.test(x));$('#ta').value=($('#ta').value+'\n'+k.join('\n')).trim();toast(k.length+' keywords imported')};r.readAsText(f)};
+$('#sv').onclick=()=>C.length?(St.add('clusters',{date:new Date().toLocaleString(),label:C.length+' clusters / '+C.reduce((a,c)=>a+c.kws.length,0)+' keywords',clusters:C}),toast('Clusters saved')):toast('Nothing to save');
+$('#dc').onclick=()=>C.length?dl(`seo-keyword-clusters-${day()}.csv`,clusterCSV(C),'text/csv'):toast('Group keywords first');draw()};
+
+const CV=document.createElement('canvas').getContext('2d');
+const px=(t,f)=>{CV.font=f;return CV.measureText(t).width};
+const trunc=(t,f,m)=>{if(px(t,f)<=m)return t;while(t.length&&px(t+'…',f)>m)t=t.slice(0,-1);return t.trim()+'…'};
+const dups=t=>{const f={};(t.toLowerCase().match(/[a-z0-9']+/g)||[]).forEach(w=>{if(w.length>2&&!STOP.includes(w))f[w]=(f[w]||0)+1});return Object.entries(f).filter(e=>e[1]>1)};
+const syl=w=>{const m=w.toLowerCase().replace(/e$/,'').match(/[aeiouy]+/g);return Math.max(1,m?m.length:1)};
+const flesch=t=>{const w=t.match(/[A-Za-z']+/g)||[],s=Math.max(1,(t.match(/[.!?]+/g)||[]).length);return w.length?Math.round(206.835-1.015*w.length/s-84.6*w.reduce((a,x)=>a+syl(x),0)/w.length):0};
+const fl=n=>n>=70?'Easy':n>=50?'Fairly easy to standard':n>=30?'Difficult':'Very difficult';
+const SK={title:'titles',meta:'descs',content:'contents'},RN={title:'Title Analysis',meta:'Meta Description Analysis',content:'Content SEO Analysis'};
+const rep=(t,l)=>`<!DOCTYPE html><html><head><meta charset=utf-8><title>${esc(t)}</title><style>body{font:14px/1.6 Arial,sans-serif;max-width:760px;margin:30px auto;padding:0 16px;color:#111}h1{margin:0}.m{color:#555;font-size:12px;border-bottom:2px solid #2aa;padding-bottom:10px;margin-bottom:18px}td{padding:6px 10px;border-bottom:1px solid #ddd;vertical-align:top}td:first-child{font-weight:700;width:30%}</style></head><body><h1>${esc(t)}</h1><div class=m>SEO Research Toolkit<br>Developed by Haseeb Mazhar | Cyber Security Student<br>Report generated: ${new Date().toLocaleString()}</div><table>${l.map(x=>`<tr><td>${esc(x[0])}</td><td>${esc(x[1])}</td></tr>`).join('')}</table></body></html>`;
+const repGet=k=>L[k]||St.g(SK[k])[0];
+function repDl(k){const r=repGet(k);if(!r)return toast('Run an analysis first');dl(`seo-${slug(RN[k])}-${day()}.html`,rep(RN[k],r.lines),'text/html')}
+function repPr(k){const r=repGet(k);if(!r)return toast('Run an analysis first');const w=open('','_blank');if(!w)return toast('Pop-up blocked — allow pop-ups to print');w.document.write(rep(RN[k],r.lines));w.document.close();w.focus();setTimeout(()=>w.print(),300)}
+const repBtns=k=>`<button data-s>Save analysis</button><button onclick="repDl('${k}')">Download report</button><button onclick="repPr('${k}')">Print / Save as PDF</button>`;
+const sugList=a=>a.length?'<ul>'+a.map(x=>`<li>${esc(x)}</li>`).join('')+'</ul>':'<p class=mut>No issues found by the rules.</p>';
+const urlShow=u=>u.replace(/^https?:\/\//,'').replace(/\/+/g,' › ').replace(/ › $/,'');
+const prev=(t,u,d,m)=>`<div class="ser${m?' m':''}"><div class=u>${esc(urlShow(u||'example.com'))}</div><div class=ti>${esc(m?t:trunc(t,'20px Arial',580))}</div><div class=de>${esc(m?d:trunc(d,'14px Arial',920))}</div></div>`;
+
+function checker(el,k){const T=k=='title',F=T?'20px Arial':'14px Arial',M=T?580:920,[lo,hi]=T?[30,60]:[70,160];
+el.innerHTML=`<div class=card><h2>${T?'SEO Title':'Meta Description'} Pixel Checker</h2><p class=mut>Every number is calculated from your input. Pixel width is measured on a canvas with ${F} (Arial or the closest installed font) against an approximate ${M}px desktop limit. Search engines may truncate differently.</p><textarea id=tx rows=${T?2:4} placeholder="${T?'Enter your page title':'Enter your meta description'}"></textarea><div class=row><input id=kw placeholder="Target keyword"></div></div><div id=res></div>`;
+const run=()=>{const t=$('#tx').value.trim(),kw=$('#kw').value.trim().toLowerCase(),R=$('#res');if(!t){R.innerHTML='<p class=mut>Start typing to see live analysis.</p>';return}
+const w=(t.match(/\S+/g)||[]).length,p=Math.round(px(t,F)),pc=Math.min(100,p/M*100),lc=t.toLowerCase(),idx=kw?lc.indexOf(kw):-1,dp=dups(t),fr=flesch(t),cta=(t.match(/\b(learn|discover|get|try|start|read|find|download|buy|shop|explore|join|see|compare|contact|order|book|save)\b/gi)||[]);
+const S=[];if(t.length<lo)S.push(`Short (${t.length} chars). Aim for roughly ${lo}–${hi} characters.`);if(t.length>hi)S.push(`Long (${t.length} chars). Aim for roughly ${lo}–${hi} characters.`);if(p>M)S.push(`About ${p-M}px over the approximate limit; it will likely be truncated.`);
+if(kw&&idx<0)S.push('Target keyword not found.');if(kw&&idx>(T?30:60))S.push('Move the keyword closer to the start.');if(!kw)S.push('Enter a target keyword to check placement.');if(dp.length)S.push('Repeated words: '+dp.map(d=>d[0]+' ×'+d[1]).join(', '));
+if(!T&&!cta.length)S.push('No call-to-action word detected (e.g. learn, discover, get, try).');
+const kwTxt=!kw?'No keyword entered':idx<0?'Not found':`Found at character ${idx+1} (word ${t.slice(0,idx).split(/\s+/).filter(Boolean).length+1})`;
+const ln=[['Text',t],['Characters',t.length],['Words',w],['Pixel width (approx.)',p+'px of ~'+M+'px'],['Target keyword',kw||'—'],['Keyword position',kwTxt],['Repeated words',dp.map(d=>d[0]+' ×'+d[1]).join(', ')||'None'],['Readability (Flesch)',fr+' – '+fl(fr)],...(T?[]:[['CTA words',cta.join(', ')||'None']]),['Suggestions (rule-based)',S.join(' | ')||'None'],['Method','Calculations from input; suggestions are rule-based. Not a Google result.']];
+L[k]={date:new Date().toLocaleString(),label:t.slice(0,70),lines:ln};
+R.innerHTML=`<div class=card><div class=grid><div class=stat><span>Characters</span><b>${t.length}</b></div><div class=stat><span>Words</span><b>${w}</b></div><div class=stat><span>Pixel width</span><b>${p}px</b></div><div class=stat><span>Readability</span><b>${fr}</b><span>${fl(fr)}</span></div><div class=stat><span>Keyword</span><b style="font-size:15px">${kwTxt}</b></div>${T?'':`<div class=stat><span>CTA</span><b style="font-size:15px">${cta.length?esc(cta.slice(0,3).join(', ')):'None'}</b></div>`}</div>
+<p><span class=mut>${p}px / ~${M}px</span></p><div class=bar><div style="width:${pc}%"></div></div><h3>Suggestions <span class=tag>rule-based</span></h3>${sugList(S)}<h3>Live preview <span class=tag>illustrative, not a Google result</span></h3>${prev(T?t:'Your Page Title',"https://example.com/page",T?'Your meta description appears here.':t)}<div class=row>${repBtns(k)}</div></div>`;
+$('[data-s]').onclick=()=>{St.add(SK[k],L[k]);toast('Analysis saved')}};
+$('#tx').oninput=run;$('#kw').oninput=run;run()}
+V.title=el=>checker(el,'title');V.meta=el=>checker(el,'meta');
+
+V.preview=el=>{el.innerHTML=`<div class=card><h2>SERP Preview</h2><p class=mut>An illustrative mock-up that updates as you type. It is not an actual Google result.</p><div class=row><input id=t style="flex:1" placeholder="Page title" value="SEO Research Toolkit: Keyword Intelligence &amp; Content Analyzer"></div><div class=row><input id=u style="flex:1" value="https://example.com/seo-toolkit"></div><textarea id=d rows=3>Generate keyword ideas, check title and meta pixel widths, and analyze your content in one free browser-based toolkit.</textarea></div><div class=card><h3>Desktop</h3><div id=pd></div><h3>Mobile</h3><div id=pm></div></div>`;
+const r=()=>{const a=[$('#t').value,$('#u').value,$('#d').value];$('#pd').innerHTML=prev(...a,0);$('#pm').innerHTML=prev(...a,1)};['#t','#u','#d'].forEach(s=>$(s).oninput=r);r()};
+
+V.content=el=>{el.innerHTML=`<div class=card><h2>Content SEO Analyzer</h2><p class=mut>Paste content (Markdown <code>#</code> headings or HTML <code>&lt;h1&gt;</code> tags are detected). Counts are calculated; suggestions are rule-based.</p><textarea id=tx rows=12></textarea><div class=row><input id=kw placeholder="Target keyword"><button class=pri id=go>Analyze</button></div></div><div id=res></div>`;
+$('#go').onclick=()=>{const raw=$('#tx').value,kw=$('#kw').value.trim().toLowerCase();if(!raw.trim())return toast('Paste some content first');
+const H=[];raw.replace(/<h([1-3])[^>]*>([\s\S]*?)<\/h\1>/gi,(m,l,t)=>H.push([+l,t.replace(/<[^>]+>/g,'').trim()]));raw.split('\n').forEach(x=>{const m=x.match(/^(#{1,3})\s+(.*)/);if(m)H.push([m[1].length,m[2].trim()])});
+const txt=raw.replace(/<[^>]+>/g,' ').split('\n').filter(x=>!/^#{1,3}\s/.test(x)).join('\n'),wd=txt.match(/[A-Za-z0-9’']+/g)||[],W=wd.length,low=txt.toLowerCase();
+const pars=txt.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean),sen=(txt.match(/[^.!?]+[.!?]+/g)||[txt]).length,lp=pars.filter(p=>p.split(/\s+/).length>120).length,fr=flesch(txt),h=n=>H.filter(x=>x[0]==n);
+let kc=0;if(kw){let i=-1;while((i=low.indexOf(kw,i+1))>=0)kc++}const kwW=kw?kw.split(' ').length:0,den=W?+(kc*kwW/W*100).toFixed(2):0,first=wd.slice(0,100).join(' ').toLowerCase().includes(kw);
+const f={};wd.forEach(x=>{x=x.toLowerCase();if(x.length>3&&!STOP.includes(x))f[x]=(f[x]||0)+1});const top=Object.entries(f).filter(e=>e[1]>1).sort((a,b)=>b[1]-a[1]).slice(0,8);
+const S=[];if(!h(1).length)S.push('Add one H1 heading.');if(h(1).length>1)S.push('Use a single H1 (found '+h(1).length+').');if(W>300&&h(2).length<2)S.push('Break the content up with at least two H2 headings.');if(lp)S.push(lp+' paragraph(s) over 120 words; consider splitting.');if(W/sen>25)S.push('Sentences average over 25 words; shorten some.');if(W<300)S.push('Under 300 words; may be thin depending on intent.');
+if(kw){if(!kc)S.push('Target keyword not found in the content.');if(den>3)S.push('Keyword density above 3%; reads as stuffing.');if(kc&&den<.5)S.push('Keyword density below 0.5%; mention it a little more naturally.');if(kc&&!first)S.push('Mention the keyword within the first 100 words.');if(kc&&!H.some(x=>x[1].toLowerCase().includes(kw)))S.push('Use the keyword (or a close variant) in a heading.')}
+const miss=kw?['what is '+kw,'how to '+kw,kw+' tips','best '+kw].filter(q=>!low.includes(q)):[];if(miss.length)S.push('Possible missing subtopics: '+miss.join('; '));
+if(top.length)S.push('Internal link ideas: link mentions of '+top.slice(0,3).map(x=>`“${x[0]}”`).join(', ')+' to related pages on your site.');
+const ln=[['Words',W],['Characters',raw.length],['Paragraphs',pars.length],['Sentences',sen],['H1 / H2 / H3',h(1).length+' / '+h(2).length+' / '+h(3).length],['Headings',H.map(x=>'H'+x[0]+': '+x[1]).join(' | ')||'None'],['Target keyword',kw||'—'],['Keyword count / density',kw?kc+' / '+den+'%':'—'],['Keyword placement',kw?'First 100 words: '+(first?'yes':'no')+'; in headings: '+(H.some(x=>x[1].toLowerCase().includes(kw))?'yes':'no'):'—'],['Readability (Flesch)',fr+' – '+fl(fr)],['Most repeated words',top.map(x=>x[0]+' ×'+x[1]).join(', ')||'None'],['Suggestions (rule-based)',S.join(' | ')||'None']];
+L.content={date:new Date().toLocaleString(),label:W+' words'+(kw?' / '+kw:''),lines:ln};
+$('#res').innerHTML=`<div class=card><h3>Calculated from your text</h3><div class=grid>${[['Words',W],['Characters',raw.length],['Paragraphs',pars.length],['Sentences',sen],['H1',h(1).length],['H2',h(2).length],['H3',h(3).length],['Avg words/sentence',(W/sen).toFixed(1)],['Readability',fr+' ('+fl(fr)+')'],['Keyword count',kw?kc:'—'],['Density',kw?den+'%':'—']].map(([a,b])=>`<div class=stat><span>${a}</span><b style="font-size:18px">${esc(b)}</b></div>`).join('')}</div>
+<h3>Structure</h3>${H.length?'<ul>'+H.map(x=>`<li>H${x[0]}: ${esc(x[1])}</li>`).join('')+'</ul>':'<p class=mut>No headings detected.</p>'}<h3>Most repeated words</h3><div class=chips>${top.map(x=>`<span class=chip>${esc(x[0])} ×${x[1]}</span>`).join('')||'<span class=mut>None repeated</span>'}</div>
+<h3>Suggestions <span class=tag>rule-based</span></h3>${sugList(S)}<div class=row>${repBtns('content')}</div></div>`;
+$('[data-s]').onclick=()=>{St.add('contents',L.content);toast('Analysis saved')}}};
+
+V.history=el=>{const SEC=[['saved','Saved keywords',r=>`${r.k} — ${r.intent} (${r.date})`],['kwh','Keyword history',r=>`${r.seed} · ${r.country} · ${r.n} ideas · ${r.date}`],['titles','Title analyses',r=>`${r.label} (${r.date})`],['descs','Description analyses',r=>`${r.label} (${r.date})`],['contents','Content analyses',r=>`${r.label} (${r.date})`],['clusters','Saved clusters',r=>`${r.label} (${r.date})`]];
+const draw=()=>{el.innerHTML=`<div class=card><h2>Keyword History &amp; Saved Data</h2><p class=mut>Stored only in this browser (localStorage).</p><button id=ca>Clear everything</button></div>`+SEC.map(([k,n,f])=>{const a=St.g(k);return`<div class=card><div class=row><h3 style="margin:0;flex:1">${n} (${a.length})</h3><button data-c="${k}">Clear</button></div>${a.slice(0,50).map((r,i)=>`<div class=row><span style="flex:1">${esc(f(r))}</span><button data-k="${k}" data-i="${i}">Delete</button></div>`).join('')||'<p class=mut>Empty</p>'}</div>`}).join('');
+el.onclick=e=>{const d=e.target.dataset;if(d.i!==undefined){const a=St.g(d.k);a.splice(d.i,1);St.s(d.k,a);draw()}if(d.c){St.s(d.c,[]);draw()}if(e.target.id=='ca'&&confirm('Delete all saved data?')){SEC.forEach(s=>St.s(s[0],[]));draw()}}};draw()};
+
+V.export=el=>{const need=()=>G.seed?CUR=gen(G):(toast('Generate keywords in Keyword Research first'),[]);
+const B=[['Keyword research CSV',()=>{const r=need();r.length&&dl(`seo-keyword-research-${slug(G.seed)}-${day()}.csv`,csv(kwH,kwRows(r)),'text/csv')}],['Long-tail keyword CSV',()=>{const r=need().filter(x=>x.w>=3);r.length&&dl(`seo-long-tail-${slug(G.seed)}-${day()}.csv`,csv(kwH,kwRows(r)),'text/csv')}],['Short-tail keyword CSV',()=>{const r=need().filter(x=>x.w<=2);r.length&&dl(`seo-short-tail-${slug(G.seed)}-${day()}.csv`,csv(kwH,kwRows(r)),'text/csv')}],['Keyword research TXT',()=>{const r=need();r.length&&dl(`seo-keyword-research-${slug(G.seed)}-${day()}.txt`,kwTXT(r))}],['Keyword research JSON',()=>{const r=need();r.length&&dl(`seo-keyword-research-${slug(G.seed)}-${day()}.json`,kwJSON(r),'application/json')}],['Keyword cluster CSV',()=>{const c=C.length?C:(St.g('clusters')[0]||{}).clusters;c&&c.length?dl(`seo-keyword-clusters-${day()}.csv`,clusterCSV(c),'text/csv'):toast('Create clusters first')}],['Title analysis report',()=>repDl('title')],['Meta description report',()=>repDl('meta')],['Content analysis report',()=>repDl('content')],['Print title report (PDF)',()=>repPr('title')],['Print meta report (PDF)',()=>repPr('meta')],['Print content report (PDF)',()=>repPr('content')]];
+el.innerHTML=`<div class=card><h2>Export &amp; Downloads</h2><p class=mut>Every file includes the toolkit name, developer branding and generation date. Reports download as printable HTML; use “Print” and choose Save as PDF.</p><div class=grid>${B.map((b,i)=>`<button data-i=${i}>${b[0]}</button>`).join('')}</div></div>`;
+el.onclick=e=>{if(e.target.dataset.i!==undefined)B[e.target.dataset.i][1]()}};
+
+V.overview=el=>{const n=k=>St.g(k).length,cnt={};CUR.forEach(r=>cnt[r.intent]=(cnt[r.intent]||0)+1);
+el.innerHTML=`<div class=card><h2 style="font-size:26px">SEO Research Toolkit</h2><p class=mut>Keyword Intelligence &amp; Content Analyzer · Developed by Haseeb Mazhar | Cyber Security Student</p><div class=row><button class=pri data-g=research>Start keyword research</button><button data-g=title>Check a title</button><button data-g=content>Analyze content</button></div></div>
+<div class=grid>${[['Saved keywords',n('saved')],['Searches',n('kwh')],['Title analyses',n('titles')],['Description analyses',n('descs')],['Content analyses',n('contents')],['Saved clusters',n('clusters')]].map(([a,b])=>`<div class=stat><span>${a}</span><b>${b}</b></div>`).join('')}</div>
+<div class=card style="margin-top:16px"><h3>Current keyword set by intent <span class=tag>rule-based</span></h3>${CUR.length?INT.map(i=>`<div class=row><span style="width:190px">${i}</span><div class=bar style="flex:1"><div style="width:${(cnt[i]||0)/CUR.length*100}%"></div></div><b>${cnt[i]||0}</b></div>`).join(''):'<p class=mut>Generate keywords to see this chart.</p>'}</div>
+<div class=card><h3>Data honesty</h3><p class=mut>Calculations (counts, pixel widths) come from your input. Keyword ideas, intent and suggestions are rule-based. Search volume, KD, CPC and SERP data are <b>unavailable</b> until you connect a provider. This tool does not claim Google accuracy.</p></div>`;
+el.onclick=e=>e.target.dataset.g&&go(e.target.dataset.g)};
+
+V.about=el=>{el.innerHTML=`<div class=card><h2 style="font-size:26px">SEO Research Toolkit</h2><p><b>Keyword Intelligence &amp; Content Analyzer</b></p><p>Developed by Haseeb Mazhar | Cyber Security Student</p><p class=mut>An SEO research and content optimization toolkit created as a technology learning project. It runs entirely in your browser, stores data locally, and is designed so a real SEO data provider can be connected later.</p><p class=note>Keyword ideas, intent labels and suggestions are rule-based. Live metrics are unavailable until a provider is connected. No ranking accuracy is claimed.</p></div>`};
+
+const NAV=[['overview','Overview','◈'],['research','Keyword Research','⌕'],['longtail','Long-tail Finder','↔'],['shorttail','Short-tail Analyzer','•'],['related','Related Keywords','⇄'],['questions','Question Keywords','?'],['kd','Keyword Difficulty','▲'],['intent','Search Intent','◎'],['cluster','Keyword Clustering','▦'],['serp','SERP Research','☰'],['title','Title Pixel Checker','T'],['meta','Meta Description Checker','¶'],['preview','SERP Preview','▭'],['content','Content SEO Analyzer','✎'],['history','Keyword History','⟲'],['export','Export & Downloads','⤓'],['about','About','i']];
+$('#nav').innerHTML=NAV.map(([id,n,i])=>`<button data-id="${id}"><i>${i}</i><span class=t>${n}</span></button>`).join('');
+function go(id){if(!V[id])id='overview';$$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.id==id));const v=$('#v');v.onclick=v.onchange=null;V[id](v);history.replaceState(null,'','#'+id);scrollTo(0,0);if(innerWidth<=800)$('#sb').classList.remove('o')}
+$('#nav').onclick=e=>{const b=e.target.closest('button');b&&go(b.dataset.id)};
+$('#mn').onclick=()=>$('#sb').classList.toggle(innerWidth<=800?'o':'c');
+const setTh=t=>{document.documentElement.dataset.theme=t;try{localStorage.setItem('seo_theme',t)}catch(e){}};
+try{setTh(localStorage.getItem('seo_theme')||'dark')}catch(e){}
+$('#th').onclick=()=>setTh(document.documentElement.dataset.theme=='dark'?'light':'dark');
+addEventListener('hashchange',()=>go(location.hash.slice(1)));
+go(location.hash.slice(1)||'overview');
+</script>
+</body>
+</html>
